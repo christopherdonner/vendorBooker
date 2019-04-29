@@ -29,7 +29,7 @@ class Booking extends Component {
   componentDidMount() {
     this.loadEvents();
     this.loadServices();
-    this.checkUser();
+    // this.checkUser();
     this.getAuthUser();
     }
 
