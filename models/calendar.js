@@ -14,10 +14,10 @@ const calendarSchema = new Schema({
     type: String,
     // required: true
   },
-  userEmail: {
+  userUID: {
     type: String
   },
-  secondaryUserName: {
+  secondaryUserUID: {
     type: String
   },
   status: {
