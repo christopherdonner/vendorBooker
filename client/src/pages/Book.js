@@ -40,7 +40,7 @@ class Booking extends Component {
       .then(res => {
         this.setState({ users: res.data });
         const user = { ...this.state.users.find(user => user.uid === localStorage.getItem('uid')) }
-        this.setState({ authUser: user });
+        this.setState({ currentUser: user });
         console.log(`@UserHome.js: Authenticated user`);
         console.log(user);
       })
@@ -61,8 +61,9 @@ checkUser = () => {
 loadEvents = () => {
   API.getCalendars()
     .then(res => this.setState({ events: res.data }))
-    // console.log(this.state.events)
     .catch(err => console.log(err));
+
+    console.log(this.state.events)
 };
 
 loadServices = () => {
@@ -105,6 +106,7 @@ handleValueChange = (event) => {
   const newApp =
   {
     ...this.state.booking,
+    userID: this.state.userUID,
     start: this.state.start
    };
   newApp[name] = value;
@@ -143,6 +145,8 @@ render() {
                                 timeIntervals={15}
                                 dateFormat="yyyy-mm-dd h:mm aa"
                                 timeCaption="time"
+                                // minTime={setHours(setMinutes(new Date(), 0), 17)}
+                                // maxTime={setHours(setMinutes(new Date(), 30), 20)}
                             />
                             <br /><br />
             What do you need done?
